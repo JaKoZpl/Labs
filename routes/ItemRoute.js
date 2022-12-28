@@ -4,10 +4,15 @@ import _ from 'lodash';
 
 const router = express.Router();
 
-module.exports = router;
+let itemsArray = items;
 
 router.get('/', (req, res) =>{
-    res.json(items);
+    res.json(itemsArray);
+})
+
+router.post('/', (req, res) =>{
+    itemsArray.push(req.body);
+    res.status(200).send("OK");
 })
 
 router.get('/:id', (req, res) =>{
@@ -20,3 +25,5 @@ router.get('/:id', (req, res) =>{
         res.send('NOT FOUND');
     }
 })
+
+module.exports = router;
