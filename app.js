@@ -1,34 +1,32 @@
 import express from 'express';
 import items from './Data/items.json';
 import _ from 'lodash';
+import ItemRoute from './routes/ItemRoute';
+import morgan from 'morgan';
 
 const BASE_ITEMS_URL = '/api/v1/items';
-const PORT = 3000;
+
 const server = express();
-console.log("Hello, world!");
+const PORT = 3000;
+
+
 const message = 'Hello NodeJs!!!!';
+console.log("Hello, world!");
 console.log(message);
+
+server.use(morgan('tiny'));
+
+server.use(BASE_ITEMS_URL, ItemRoute)
 
 server.get('/', (req, res) => {
     console.log("Request to root");
     res.send("Hello my js-route!");
 });
 
+
 server.listen( 3000, () =>{
     console.log('Server is listening on port ' + PORT);
 });
 
-server.get(BASE_ITEMS_URL, (req, res) =>{
-    res.json(items);
-})
-server.get(BASE_ITEMS_URL+'/:id', (req, res) =>{
-    const id = req.params.id;
-    const item = _.find(items, item => item.id === id);
-    if(item) {
-        res.json(item);
-    }else{
-        res.send('NOT FOUND');
-    }
-})
 
 
