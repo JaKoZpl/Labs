@@ -10,10 +10,13 @@ const message = 'Hello NodeJs!!!!';
 console.log(message);
 
 server.get('/', (req, res) => {
+    console.log("Request to root");
     res.send("Hello my js-route!");
 });
 
-
+server.listen( 3000, () =>{
+    console.log('Server is listening on port ' + PORT);
+});
 
 server.get(BASE_ITEMS_URL, (req, res) =>{
     res.json(items);
