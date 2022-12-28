@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Express study</title>
+    <style>
+        body {
+            font-family: Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #container {
+            margin: 0 10%;
+            padding: 20px;
+            border: 10px solid #c8102e;
+        }
+        table {
+            position:relative;
+            left: 30%;
+            width: 500px;
+            border: 2px solid black;
+            padding: 2px;
+        }
+        td{
+            border: 2px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Hello EJS gor ExpressJs </h1>
+<div class="container">
+    <table style="border=3px" ><tr><td>id</td><td>Name</td><td>Description</td></tr>
+    <% items.forEach(function(item){ %>
+            <tr ><td colspan="3">[ <%= item.id %> ] <%= item.name %> / <%= item.description %></td></tr>
+   <% }) %></table>
+</div>
+
+</body>
+</html>
